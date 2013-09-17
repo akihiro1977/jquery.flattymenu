@@ -1,0 +1,55 @@
+@charset "utf-8";
+* {
+	margin: 0px;
+	padding: 0px;
+}
+ul, ol, li, dl, dt, dd {
+	display: block;
+	list-style-type: none;
+}
+a:link {
+	text-decoration: none;
+}
+
+#header {
+	background-color: #F9F9F9;
+	height: 44px;
+	box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+#header  a.flattyOpen {
+	display: inline-block;
+	margin-top: 8px;
+	margin-right: 5px;
+}
+
+#contents {
+	padding: 10px;
+}
+#menu {
+	display: none;
+
+}
+#menu a.flattyClose {
+	display: block;
+}
+
+#menu .profileBox {
+	margin: 20px;
+}
+#menu img.imageProfile {
+	height: 80px;
+	width: 80px;
+}
+.list-group-item {
+	background: none;
+	background-color: none;
+}
+
+
+.blogBox img {
+	width: 240px;
+	height: auto;
+}
+.m5 {
+	margin: 5px;
+}
