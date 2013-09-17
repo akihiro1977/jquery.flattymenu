@@ -3,6 +3,8 @@
 jqeury.flattymenu is a simply jQuery plugin that you can add a iOS7 like menu.
 
 ## Demo
+http://labo.i-section.net/jquery.flattymenu/example.html
+
 [blog that is described.(ja)](http://akihiro.jugem.jp/?eid=300)
 
 ## Setup
