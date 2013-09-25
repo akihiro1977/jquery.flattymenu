@@ -3,6 +3,10 @@
 	margin: 0px;
 	padding: 0px;
 }
+body {
+	background-color: #F0F0F0;
+}
+
 ul, ol, li, dl, dt, dd {
 	display: block;
 	list-style-type: none;

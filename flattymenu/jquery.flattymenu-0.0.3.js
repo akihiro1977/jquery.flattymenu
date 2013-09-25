@@ -86,7 +86,7 @@
 		
 		// open / close
 		if (_self.options.btnOpen){
-			$(_self.options.btnOpen).on("touchend", function(e){
+			$(_self.options.btnOpen).on("touchend mouseup", function(e){
 				if ($("#flattyMenuWrapper:visible").length>0){
 					_self.menuOff();
 				} else {
@@ -96,7 +96,7 @@
 			});
 		}
 		if (_self.options.btnClose){
-			$(_self.options.btnClose).on("touchend", function(e){
+			$(_self.options.btnClose).on("touchend mouseup", function(e){
 				if ($("#flattyMenuWrapper:visible").length>0){
 					_self.menuOff();
 				}
