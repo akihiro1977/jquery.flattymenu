@@ -27,6 +27,9 @@ a:link {
 }
 #menu {
 	display: none;
+	margin: 10px;
+	border-radius: 4px;
+	background-color: rgba(255,255,255,0.5);
 
 }
 #menu a.flattyClose {
@@ -47,8 +50,10 @@ a:link {
 
 
 .blogBox img {
-	width: 240px;
+	width: 146px;
 	height: auto;
+	float: left;
+	margin: 2px;
 }
 .m5 {
 	margin: 5px;
