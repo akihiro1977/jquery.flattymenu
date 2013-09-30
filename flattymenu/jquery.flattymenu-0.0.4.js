@@ -145,11 +145,11 @@
 										position:	"relative",
 										height:		window.innerHeight,
 										overflow:	"hidden",
-										"filter": "blur(15px)",
-										"-webkit-filter": "blur(15px)",
+										"filter": "blur(20px) saturate(150%)",
+										"-webkit-filter": "blur(20px) saturate(150%)",
 										top:		sTop
 									})
-									.scrollTop(1);
+									.scrollTop(sTop);
 							}, 0);
 						}
 					});
