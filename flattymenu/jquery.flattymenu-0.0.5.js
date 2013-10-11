@@ -82,17 +82,20 @@
 			
 			$(window).on("scroll", function(){
 				
-					
 				if (scrollTimerId) clearInterval(scrollTimerId);
 				
 				scrollTimerId = setInterval(function(){
-					if (!$("#flattyMenuWrapper:visible").length){
+					if ($("#flattyMenuWrapper:visible").length==0){
 						var menuY = $(window).scrollTop() + parseInt(window.innerHeight, 10) - $(_self.options.fixedFooterElm).outerHeight(true);
-						$(_self.options.fixedFooterElm)
-							.css({
-								top:      menuY+"px"
-							})
-							.show(0);
+						if ($("textarea:focus, input:focus").length>0){
+							$(_self.options.fixedFooterElm).hide(0);
+						} else {
+							$(_self.options.fixedFooterElm)
+								.css({
+									top:      menuY+"px"
+								})
+								.show(0);
+						}
 					}
 				}, 200);
 				
@@ -146,7 +149,7 @@
 		
 		// open / close
 		if (_self.options.btnOpen){
-			$(_self.options.btnOpen).on("touchend mouseup", function(e){
+			$(_self.options.btnOpen).on("touchend", function(e){
 				if ($("#flattyMenuWrapper:visible").length>0){
 					_self.menuOff();
 				} else {
@@ -156,13 +159,26 @@
 			});
 		}
 		if (_self.options.btnClose){
-			$(_self.options.btnClose).on("touchend mouseup", function(e){
+			$(_self.options.btnClose).on("touchend", function(e){
 				if ($("#flattyMenuWrapper:visible").length>0){
 					_self.menuOff();
 				}
 				e.preventDefault();
 			});
 		}
+		
+		
+		$("#flattyMenuWrapper a").on("click", function(e){
+			if ($(this).attr("href").match(/javascript/i)){
+			} else {
+				$.flattymenu.prototype.menuCloseAndLocate($(this).attr("href"));
+				e.preventDefault();
+				return false;
+			}
+		});
+		
+		
+		
 	}
 	
 	$.extend( $.flattymenu.prototype , {
@@ -228,11 +244,16 @@
 									})
 									.scrollTop(sTop);
 							}, 0);
+							
+							if ($flattymenuFixedMenu){
+								$flattymenuFixedMenu.show(0);
+							}
+							
 						}
 					});
 			
 		},
-		menuOff : function(){
+		menuOff : function(callback){
 			
 			var $flattymenuFixedMenu = null;
 			var menuOuterHeight = 0;
@@ -285,8 +306,23 @@
 						easing:		"swing",
 						complete:	function(){
 							$("#flattyMenuWrapper").css({ display: "none" });
+							
+							if (callback) callback();
+							
 						}
 					});
+		},
+		menuCloseAndLocate: function(url){
+			
+			if ($("#flattyMenuWrapper:visible").length>0){
+				
+				$.flattymenu.prototype.menuOff(function(){
+					$("#flattyBodyWrapper").fadeOut(250, function(){ location.href = url; });
+				});
+				
+			} else {
+					$("#flattyBodyWrapper").fadeOut(250, function(){ location.href = url; });
+			}
 		},
 		reLayout: function(){
 			
